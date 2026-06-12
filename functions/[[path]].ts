@@ -2,6 +2,7 @@
  /* TSP: clean w/ TSv5.8.3 -> ES2020 (no JSX, no Module) */
 
  import { env } from "cloudflare:workers";
+ /// "use strict";
 
  /**/const globje= (( ()=>{} ).constructor('return this;'))();
  /**/const proces= globje['process'] || { 'env': env };
@@ -492,5 +493,5 @@
  
  export async function onRequest(ctx :EventContext<Record<string, string>,
                                             any, Record<string, unknown>>) {
-    return await worker_export_default.fetch(ctx.request, ctx.env, ctx)    }
+    return await worker_export_default.fetch(ctx.request, ctx.env, ctx);   }
  
