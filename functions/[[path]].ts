@@ -1,7 +1,7 @@
 
  /* TSP: clean w/ TSv5.8.3 -> ES2020 (no JSX, no Module) */
 
- import { env } from "cloudflare:pages";
+ import { env } from "cloudflare:workers";
  /// "use strict";
 
  /**/const globje= (( ()=>{} ).constructor('return this;'))();
