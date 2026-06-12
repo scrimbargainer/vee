@@ -1,7 +1,7 @@
 
  /* TSP: clean w/ TSv5.8.3 -> ES2020 (no JSX, no Module) */
 
- import { env } from "cloudflare:workers";
+ import { env } from "cloudflare:pages";
  /// "use strict";
 
  /**/const globje= (( ()=>{} ).constructor('return this;'))();
@@ -81,6 +81,7 @@
   if (typeof residue !== 'number')                      throw new Error('Missing residue');
   if (typeof page    !== 'string' || !page)             throw new Error('Missing page');
   if (typeof text    !== 'string' || !text)             throw new Error('Missing text');
+  if (       secret  !== X_SECRET)                      throw new Error('Expired secret');
   return { secret, residue, page, text };
  }
  /**\
