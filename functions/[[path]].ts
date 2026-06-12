@@ -1,14 +1,21 @@
 
- /* THIS WON'T WORK AS IS - TODO= REPLACE= xyzzy playground-glue */
-
  /* TSP: clean w/ TSv5.8.3 -> ES2020 (no JSX, no Module) */
+
+ import { env } from "cloudflare:workers";
+
+ /**/const globje= (( ()=>{} ).constructor('return this;'))();
+ /**/const proces= globje['process'] || { 'env': env };
  
- const A_PRIKEY= 'xyzzy';
- //const A_DB_URL= 'file:///dev/null';
- //const A_DB_KEY= 'tiger@scott';
- const WIKI_API= 'file:///dev/null';
- const BOT_USER= 'bot@me';
- const BOT_PASS= 'yzzyx';
+ ////const A_SECRET = "" + proces.env['X_SECRET'];
+ /**/const X_SECRET = "" + proces.env['X_SECRET'];
+ /**/const A_PRIKEY = "" + proces.env['A_PRIKEY'];
+ 
+ ////const WIKI_API = 'https:'+'//splats.miraheze.org/w/api.php';
+ /**/const WIKI_API = 'https:'+'//shplatsh.miraheze.org/w/api.php'; // TODO= better
+ 
+ /**/const BOT_USER = "" + proces.env['BOT_USER'];
+ ////const BOT_PASS = "" + proces.env['BOT_PASS'] + A_SECRET.slice(0, A_SECRET.length-10);
+ /**/const BOT_PASS = "" + proces.env['BOT_PASS'] + X_SECRET.slice(0, X_SECRET.length-10);
  
  const always= true; always; // const never= false;
  //;interface _t_ { _: _t_ }; const _ :_t_= { _: (undefined as unknown as _t_), }; _._= _;
