@@ -522,6 +522,6 @@
  };
  
  export async function onRequest(ctx :EventContext<Record<string, string>,
-                                            any, Record<string, unknown>>) { EVs();
+                                            any, Record<string, unknown>>) { EVs_DO();
     return await worker_export_default.fetch(ctx.request, ctx.env/**\, ctx/**/ );   }
  
