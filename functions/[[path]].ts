@@ -110,6 +110,7 @@
   if (typeof residue !== 'number')                      throw new Error('Missing residue');
   if (typeof page    !== 'string' || !page)             throw new Error('Missing page');
   if (typeof text    !== 'string' || !text)             throw new Error('Missing text');
+  if (                   EV.X_SECRET) {} else           throw new Error('Unknown secret');
   if (       secret  !== EV.X_SECRET)                   throw new Error('Expired secret');
   return { secret, residue, page, text };
  }
