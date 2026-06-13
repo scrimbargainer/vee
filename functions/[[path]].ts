@@ -167,7 +167,7 @@
                  { name: 'HMAC', hash: 'SHA-256', length: 512 }, true, ['sign', 'verify'] );
  
     const sharedKey_out= await crypto.subtle.deriveKey( { name: 'ECDH', public: pubkey }, prikey,
-      { name: 'HMAC', hash: 'SHA-256', length: 512 }, true, ['sign', 'verify'] ); sharedKey_out;
+      { name: 'HMAC', hash: 'SHA-256', length: 256 }, true, ['sign', 'verify'] ); sharedKey_out;
  
     // export as JWK and return as base64 string for KV storage
     const exported= await crypto.subtle.exportKey('jwk', sharedHMACKey);
