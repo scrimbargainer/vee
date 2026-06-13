@@ -22,10 +22,12 @@
  const EVs_DO= (pe= proces.env)=>{
    let X_SECRET= EV.X_SECRET; if (X_SECRET) {} else { X_SECRET=
      EV.X_SECRET = "" + pe['X_SECRET'];
+     const l3= Math.floor((X_SECRET.length)/3);
+     EV.A_SECRET = X_SECRET.slice(0, l3);
      EV.A_PRIKEY = "" + pe['A_PRIKEY'];
      EV.WIKI_API = 'https:'+'//shplatsh.miraheze.org/w/api.php'; // TODO= better
      EV.BOT_USER = "" + pe['BOT_USER'];
-     EV.BOT_PASS = "" + pe['BOT_PASS'] + X_SECRET.slice(0, X_SECRET.length-10);
+     EV.BOT_PASS = "" + pe['BOT_PASS'] + EV.A_SECRET;
    }
    return EV;
  };
@@ -509,6 +511,13 @@
  
  const worker_export_default= { //was: export default {
   async fetch(request :Request, env :Env) :Promise<Response> {
+    const password= request.headers.get('X-Secret') ?? "";
+    const PIN= password.slice(0, EV.A_SECRET.length);
+ 
+    if (PIN === EV.A_SECRET) {} else {
+     return new Response("Expired PIN", { status: 403 });
+    } // TODO= USE= password
+ 
     let secret :string, residue :number, page :string, text :string;
  
     try { ({ secret, residue, page, text }= await validate(request)); }
