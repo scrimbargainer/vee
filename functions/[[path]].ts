@@ -424,7 +424,9 @@
  
     // compute ECDH — expensive, therefore last
     const derived= await computeECDH(EV.A_PRIKEY, rec.essence);
-    if (derived !== null) {} else throw new Error('Miscalculated');
+    if (derived !== null) {} else throw new Error('Miscalculated'
+ + " (" + (""+EV.A_PRIKEY).length + ", " + (""+rec.essence).length + ")"
+                                                 );
  
  if (!!!always) {}                                   else {
     // populate both KV records regardless of match
